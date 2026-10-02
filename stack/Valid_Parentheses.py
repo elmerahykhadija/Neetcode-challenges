@@ -31,3 +31,33 @@ class Solution:
             return True
         else :
             return False
+#------------------------------------------------------------
+#------METHOD 2-----------------------------------------
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        hash_map={
+            '(':')',
+            '[':']',
+            '{':'}'
+        }
+        count=0
+        stack=[]
+        for i in s:
+            if i in hash_map:
+                stack.append(i)
+            else:
+                if not stack : return False
+                if stack[-1] in hash_map and hash_map[stack[-1]]==i:
+                    stack.pop()
+                    count+=1
+                else:
+                    return False
+        if stack:
+            return False
+        if count==len(s)//2:
+            return True
+
+
+
+        
