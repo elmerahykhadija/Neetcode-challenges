@@ -13,25 +13,27 @@ conserver une pile auxiliaire des minima.
 class MinStack:
 
     def __init__(self):
-        self.stack=[]        
+        self.stack=[]
+        self.minStack=[]
+
+        
 
     def push(self, val: int) -> None:
-        self.stack.append(val)        
+        self.stack.append(val)
+        if self.minStack:
+            val=min(val,self.minStack[-1])
+        self.minStack.append(val)
 
     def pop(self) -> None:
-        if not self.stack :
-            return
-        self.stack=self.stack[:-1]
+        if self.stack:
+            del self.stack[-1] 
+            del self.minStack[-1]      
 
     def top(self) -> int:
-        a=self.stack[-1]
-        return a
+        return self.stack[-1]
+        
 
     def getMin(self) -> int:
-        minimum=self.stack[0]
-        for i in range(0,len(self.stack)):
-            if minimum > self.stack[i]:
-                minimum=self.stack[i]
-        return minimum
-
+        return self.minStack[-1]
+        
         
