@@ -26,4 +26,15 @@ class Solution:
             lista.append(head)
             head=head.next
         return False
-        
+#-------------------------------------
+# -------METHOD 2----------------
+# class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        visited=[]
+        while head:
+            if head in visited:
+                return True
+            else :
+                visited.append(head)
+            head=head.next
+        return False       
