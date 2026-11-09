@@ -30,9 +30,3 @@ class Solution:
             maxi=max(maxi,v)
             stack.pop()
         return maxi
-
-
-
-
-
-        
