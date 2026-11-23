@@ -16,7 +16,21 @@ Input: nums = [1,2,4,6]
 
 Output: [48,24,12,8]
 """
-import math
+#method 1: using postfix and prefix product
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        prefix=[1]*len(nums)
+        postfix=[1]*len(nums)
+        output=[]
+        for i in range(1,len(nums)):
+            prefix[i]=prefix[i-1]*nums[i-1]
+        for i in range(len(nums)-2,-1,-1):
+            postfix[i]=postfix[i+1]*nums[i+1]
+        
+        for j in range(0,len(nums)):
+            output.append(postfix[j]*prefix[j])
+        return output
+#method 2: import math
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         output=[1]*len(nums)
@@ -35,4 +49,6 @@ class Solution:
             i=i-1
         return output
         
+
+
         
